@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cmn-Hans">
+    <meta charset="UTF-8">
+    <title>{{ data['title'] }}</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=0">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- 360用GCF渲染 -->
+    <meta name="renderer" content="webkit">
+    <!-- 优先使用最新IE内核,chrome内核 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <!-- 禁止百度转码 -->
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link rel="stylesheet" href="http://w.qiandeer.com/qd/static/lock/assets/global.css"/>
+    <style>
+        html, body {
+            font-size: 62.5%;
+            height: 100%;
+            min-height: 480px;
+            width: 100%;
+            background-color: #e5e5e5;
+            font-family: "Microsoft YaHei", "Helvetica Neue", Helvetica, STHeiTi, sans-serif
+        }
+        body {
+            font-size: 1.6rem;
+        }
+        h2 { font-size: 20px; padding: 16px 0px; margin: 0; }
+        ul { display: block; padding: 0; margin: 0; }
+        ul li { display: block; }
+        .lists { margin: 0 12px; color: #666; padding-bottom: 24px; }
+        .lists > li {
+            margin: 0 0 12px 0;
+        }
+        .lists > li > strong {
+            font-size: 16px;
+            color: #d93c37;
+        }
+        .lists > li > ul {
+            font-size: 14px;
+            margin-top: 8px;
+            line-height: 1.5;
+            background-color: #fff;
+            padding: 12px 16px;
+        }
+    </style>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?4b93dfaedb3bbc5474c9ff73f0ac9b70";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</head>
+<body class="page box vertical">
+    <h2 class="tac">获取不到奖励、以及兑换问题</h2>
+    <ul class="lists">
+        <li>
+            <strong>为什么下载应用后，体验了，没有收益，追加任务全部显示已完成？</strong>
+            <ul>
+                <li>1) 你之前在别的平台做过这个任务，不能再做。</li>
+                <li>2) 手机刷过机造成的，这个我们没有办法解决。</li>
+                <li class="mt8">每天的广告都有限量，达到限量就会没法再做，比如会出现下载完就显示全都完成，这种情况等第二天再做；或者会出现下载之后任务消失了。</li>
+            </ul>
+        </li>
+        <li>
+            <strong>为什么显示已完成任务，但是收益不到账？</strong>
+            <ul>
+                <li>1) 请先去明细里查是否有积分记录。</li>
+                <li>2) 请卸载重装，然后按照步骤重新完成任务。</li>
+            </ul>
+        </li>
+        <li>
+            <strong>为什么完成了下载任务后，按要求体验时长了，没有奖励，还是一直显示可做？</strong>
+            <ul>
+                <li>1) 确定是否从钱鹿客户端打开需要体验的APP,是否按要求注册、体验时长，如果任务写明打一局游戏，但是体验时长不是打一局就可以的了，请体验应用直到收到通知说完成。</li>
+            </ul>
+        </li>
+        <li>
+            <strong>为什么兑换失败？</strong>
+            <ul>
+                <li>1) 先确定你邀请的徒弟是否拿到奖励之后就不做任务，果真如此的话，会被系统判断僵尸用户。所以兑换失败。如果疑问，请进QQ群:423336420,联系客服。</li>
+            </ul>
+        </li>
+        <li>
+            <strong>打开应用，一直停留在启动页面，并且提示“本月不能绑定新手机”？</strong>
+            <ul>
+                <li>1) 钱鹿锁屏限制每个账号每个月只能切换登录3次，请不要频繁切换手机登录。</li>
+            </ul>
+        </li>
+    </ul>
+
+</div>
+
+<script src="http://w.qiandeer.com/qd/static/lock/assets/zepto.js"></script>
+<script src="http://w.qiandeer.com/qd/static/lock/assets/api.js"></script>
+<script>
+    var PD = {
+        txUrl: ''
+    }
+
+
+    /**
+     *  =get request  获取url参数集合
+     *
+     *  @param     {string}  param name
+     *  @return    {object}  参数集合
+     */
+    function getRequest () {
+        var url = window.location.search,  // 获取url中"?"后面的字符串
+                i = 0,
+                args, arg,
+                back = new Object();
+
+        if (url == '') return 0;
+
+        if (url.indexOf('?') != -1) {
+            args = url.substr(1).split('&');
+
+            for (; i < args.length; i++) {
+                arg = args[i].split('=');
+                back[arg[0]] = arg[1];
+            }
+            ;
+        }
+
+        if (arguments[0]) return back[arguments[0]];
+        return back;
+    }
+
+    var     iswx        = /MicroMessenger/i.test(navigator.userAgent),
+            iswb        = /weibo/i.test(navigator.userAgent) || /TencentMicro/i.test(navigator.userAgent) ,
+            isqq        = /QQ/i.test(navigator.userAgent),
+            isandroid   = /android/i.test(navigator.userAgent),
+            isios       = !!navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),
+            params      = getRequest();
+
+
+    window.onload = function() {
+        if (isios) {
+//            window.location.href = 'https://qiandeer.com';
+            return false;
+        }
+        else {
+            build();
+            events();
+        }
+
+        return false;
+    }
+
+    // 构建
+    function build () {
+        if (iswx) {
+            var $btn = $('.ym-banner-btn');
+            $btn.attr('href', PD.txUrl);
+        }
+    }
+
+    // 事件处理
+    function events() {
+
+        $('.page').on('tap', function(e) {
+            var e = e || window.event,
+                target = e.target,
+                $this = $(target),
+                ck = parseInt( $this.data('ck') || 0 );
+
+            switch (ck) {
+                default :
+                    return false;
+            }
+
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        });
+    }
+</script>
+</body>
+</html>
+
+
+
+
